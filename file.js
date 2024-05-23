@@ -1,47 +1,41 @@
-const addTask = document.getElementById('add-task');
 const taskContainer = document.getElementById('task-container');
 const inputTask = document.getElementById('input-task');
 
-addTask.addEventListener('click', function() {
-  let task = document.createElement('div');
-  task.classList.add('task');
 
-  let li = document.createElement('li');
-  li.innerText = `${inputTask.value}`;
-  task.appendChild(li);
-
-  let checkButton = document.createElement("button");
-  checkButton.innerHTML = '<i class="fa-solid fa-check"></i>';
-  checkButton.classList.add('checkTask');
-  task.appendChild(checkButton);
-  
-  let deleteButton = document.createElement("button");
-  deleteButton.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
-  deleteButton.classList.add('deleteTask');
-  task.appendChild(deleteButton);
-
-  if (inputTask.value === "") {
-    alert('please enter a task');
+function addTask () {
+  const taskText = inputTask.value.trim();
+  if (taskText !== "") {
+    const li = document.createElement('li');
+    li.textContent = taskText;
+    taskContainer.appendChild(li);
+    inputTask.value = '';
+    li.addEventListener('click', completeTask);
+    const deleteButton = document.createElement('button');
+    deleteButton.style.backgroundColor= '#bb2424';
+    deleteButton.textContent = 'Delete';
+    deleteButton.addEventListener('click', deleteTask);
+    li.appendChild(deleteButton);
   } else {
-    taskContainer.appendChild(task);
+    alert('you must write an input');
   }
+ 
+}
 
-  inputTask.value = "";
+function show() {
+  document.getElementsByClassName('task-wrapper').classList.remove = ('hidden');
+}
+
+function completeTask(event) {
+  const task = event.target;
+  task.classList.toggle('completed');
+}
+
+function deleteTask(event) {
+  const task = event.target.parentElement;
+  taskContainer.removeChild(task);
+}
 
 
-  checkButton.addEventListener('click', function() {
-    checkButton.parentElement.style.textDecoration = "line-through";
-  })
-
-  deleteButton.addEventListener('click', function(e){
-    
-    let target = e.target;
-
-    target.parentElement.parentElement.remove();
-
-
-  })
-})
 
 
 

@@ -17,25 +17,20 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <title>DOM manipulation-3</title>
+    <title>DOM manipulation-5</title>
     <script src="file.js" defer></script>
   </head>
   <body>
-     
     <div class="container">
-      <div id="add-task-container">
-        <input type="text" placeholder="Enter Task" id="input-task">
-        <button id="add-task"><i class="fa-solid fa-plus"></i></button>
+      <h2 class="header">TO DO LIST<img src="pngwing.com.png" /></h2>
+      <div class="task-wrapper bg-color">  
+      <input type="text" placeholder="Enter Task" id="input-task" />
+        <button onclick="addTask();show()" >Add Task</button>
       </div>
-      
-
-      <div id="task-container">
         
+       <div class="task-wrapper">
+        <ul id="task-container"></ul>
       </div>
-
     </div>
-
-
-
   </body>
 </html>
