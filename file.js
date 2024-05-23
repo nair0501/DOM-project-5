@@ -21,9 +21,6 @@ function addTask () {
  
 }
 
-function show() {
-  document.getElementsByClassName('task-wrapper').classList.remove = ('hidden');
-}
 
 function completeTask(event) {
   const task = event.target;
